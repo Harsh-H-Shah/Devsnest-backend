@@ -1,0 +1,56 @@
+sudo apt install redis
+redis-cli
+SET name Harsh -> OK
+GET name -> "Harsh"
+SET age 20 -> (integer) 1
+DEL age -> OK
+EXIST name -> (integer) 1
+EXIST age -> (integer) 0
+SET age 20
+KEYS * (all keys) -> 1) name 2) age
+FLUSHALL
+KEYS * -> (empty array)
+expire name 10 (deletes key in 10 seconds)
+ttl name (time to live for name key)
+setex name 10 Harsh (set name expires in 10 seconds)
+lpush work devsnest
+LRANGE work 0 -1 -> 1) "devsnest"
+rpush work college
+LRANGE work 0 -1 -> 1) "devsnest" 2) "college"
+lpop work
+LRANGE work 0 -1 -> 1) "college"
+SADD friends arun (set of friends)
+SADD friends barney 
+SADD friends arun -> integer 0 not allowed
+HSET person name Harsh (set in a set is HSET where it looks like person:{name:Harsh})
+HGET person name -> "Harsh"
+HGETALL person -> 1) "name" 2) "Harsh
+HEXISTS person name -> integer 1
+
+-------------------------------------------------------------
+
+postgres:
+
+CREATE USER devnest WITH PASSWORD 'password';         
+CREATE DATABASE devsDB;                               
+GRANT ALL PRIVILEGES ON DATABASE devsDB to devnest;   
+DROP DATABASE IF EXISTS devsDB;                       
+CREATE DATABASE devsDB;
+
+\l;                                                  
+\c devsDB;                                            
+
+=========================Table==============================
+
+CREATE TABLE COMPANY(
+   ID INT PRIMARY KEY     NOT NULL,
+   NAME           TEXT    NOT NULL,
+   AGE            INT     NOT NULL,
+   ADDRESS        CHAR(50),
+   SALARY         REAL
+);                                                    
+CREATE TABLE DEPARTMENT(
+   ID INT PRIMARY KEY      NOT NULL,
+   DEPT           CHAR(50) NOT NULL,
+   EMP_ID         INT      NOT NULL
+);                                                    
