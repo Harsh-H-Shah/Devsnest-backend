@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Harsh-H-Shah/Devsnest-backend/issues"
   },
-  "homepage": "https://github.com/Harsh-H-Shah/Devsnest-backend#readme"
+  "homepage": "https://github.com/Harsh-H-Shah/Devsnest-backend#readme",
+  "dependencies": {
+    "jade": "^1.11.0"
+  }
 }
